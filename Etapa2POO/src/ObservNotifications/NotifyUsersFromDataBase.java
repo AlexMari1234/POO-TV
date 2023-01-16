@@ -1,4 +1,4 @@
-package ObservNotfications;
+package ObservNotifications;
 
 import database.DataBase;
 import datainput.Movies;

@@ -25,7 +25,6 @@ public class Main {
      */
     public static void main(final String[] args) throws IOException  {
         if (args.length >= 2) {
-            System.out.println(args[0]);
             ObjectMapper objectMapper = new ObjectMapper();
             DataBase inputData = DataBase.getInstance();
             inputData = objectMapper.readValue(new File(args[0]), DataBase.class);
