@@ -13,10 +13,19 @@ public class Subscribe extends Command {
     private CurrentPage currentPage;
     private Actions action;
 
+    /**
+     * copy current page and action
+     */
     public Subscribe(final CurrentPage currentPage, final Actions action) {
         this.currentPage = currentPage;
         this.action = action;
     }
+
+    /**
+     * This method is used to execute a command to subscribe a user to a genre of a movie.
+     * @param objectMapper the object mapper used to handle JSON data
+     * @param output the ArrayNode used to store the output data
+     */
     public void executeCommand(final ObjectMapper objectMapper, final ArrayNode output) {
         String subscribedGenre = action.getSubscribedGenre();
         if (currentPage.getName().equals("see details")) {
@@ -36,7 +45,13 @@ public class Subscribe extends Command {
         }
     }
 
-
+    /**
+     *This method is used to check if the subscribed genre of a user is present in the genres
+     * of a movie.
+     * @param subscribedGenre the genre that the user has subscribed to
+     * @param currentMovie the movie object that needs to be checked
+     * @return 1 if the subscribed genre is present in the movie genres, 0 otherwise
+     */
     public static int checkGenreForMovie(final String subscribedGenre, final Movies currentMovie) {
         for (int i = 0; i < currentMovie.getGenres().size(); i++) {
             if (currentMovie.getGenres().get(i).equals(subscribedGenre)) {
@@ -47,6 +62,14 @@ public class Subscribe extends Command {
         return 0;
     }
 
+    /**
+     * This method is used to check if the subscribed genre of a user is already present
+     * in the list of subscribed genres of the user.
+     * @param subscribedGenre the genre that the user has subscribed to
+     * @param currentUser the user object whose subscribed genres needs to be checked
+     * @return 0 if the subscribed genre is already present in the subscribed genres of
+     * the user, 1 otherwise
+     */
     public static int checkSubscribedGenreForUser(final String subscribedGenre,
                                                   final Users currentUser) {
         for (int i = 0; i < currentUser.getSubscribedGenres().size(); i++) {

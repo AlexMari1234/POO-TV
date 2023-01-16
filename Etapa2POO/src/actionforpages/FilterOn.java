@@ -24,6 +24,9 @@ public class FilterOn extends Command {
     private DataBase inputData;
     private Actions action;
 
+    /**
+     * copy current page, input data and action
+     */
     public FilterOn(final CurrentPage currentPage, final DataBase inputData,
                     final Actions action) {
         this.currentPage = currentPage;
@@ -31,6 +34,11 @@ public class FilterOn extends Command {
         this.action = action;
     }
 
+    /**
+     * Filters and sorts a list of movies based on the specified criteria.
+     * @param objectMapper the object mapper object used to serialize objects to JSON
+     * @param output the output array node used to store the filtered and sorted list of movies
+     */
     public void executeCommand(final ObjectMapper objectMapper, final ArrayNode output) {
         if (currentPage.getName().equals("movies")) {
             Filter filter = action.getFilters();

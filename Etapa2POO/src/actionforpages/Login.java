@@ -19,6 +19,9 @@ public class Login extends Command {
     private Actions action;
     private ArrayList<CurrentPage> pages;
 
+    /**
+     * copy current page, input data, action and pages
+     */
     public Login(final CurrentPage currentPage, final DataBase inputData,
                  final Actions action, final ArrayList<CurrentPage> pages) {
         this.currentPage = currentPage;
@@ -26,6 +29,16 @@ public class Login extends Command {
         this.action = action;
         this.pages = pages;
     }
+
+    /**
+     * Handles the login action by checking if the credentials provided in the action match a user
+     * in the input data and setting the current user in the current page accordingly.
+     * If the conditions for login are not met or the credentials do not match a user,
+     * it outputs an error.
+     * @param objectMapper an object used for serializing and deserializing Java objects to and
+     * from JSON
+     * @param output an array node representing the output of the action
+     */
     public void executeCommand(final ObjectMapper objectMapper, final ArrayNode output) {
         if (currentPage.getName().equals("login")
                 && currentPage.getCurrentUser().getUser() == null) {

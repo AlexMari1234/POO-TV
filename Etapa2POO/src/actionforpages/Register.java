@@ -20,6 +20,13 @@ public class Register extends Command {
     private Actions action;
     private ArrayList<CurrentPage> pages;
 
+    /**
+     * copy current page, input data, action and pages
+     * @param currentPage
+     * @param inputData
+     * @param action
+     * @param pages
+     */
     public Register(final CurrentPage currentPage, final DataBase inputData,
                     final Actions action, final ArrayList<CurrentPage> pages) {
         this.currentPage = currentPage;
@@ -27,6 +34,17 @@ public class Register extends Command {
         this.action = action;
         this.pages = pages;
     }
+
+    /**
+     * Handles the register action by checking if the credentials provided in the action are
+     * available for registration, creating a new user with the provided credentials if they are,
+     * and setting the current user in the current page to the new user. If the conditions for
+     * registration are not met or the credentials are not available, it outputs an error.
+     * Regardless of the outcome of the action, the name of the current page is set to "homepage".
+     * @param objectMapper an object used for serializing and deserializing Java objects to and
+     * from JSON
+     * @param output an array node representing the output of the action
+     */
     public void executeCommand(final ObjectMapper objectMapper, final ArrayNode output) {
         if (currentPage.getName().equals("register")
                 && currentPage.getCurrentUser().getUser() == null) {

@@ -257,58 +257,6 @@ public class ActionForOnePage {
         }
     }
 
-    /**
-     * Handles the purchase of a premium account by checking if the user has enough tokens and
-     * updating their account type and token count accordingly. If the conditions for the purchase
-     * not met or the purchase fails, it outputs an error.
-     * @param currentPage an object representing the current page
-     * @param objectMapper an object used for serializing and deserializing Java objects to and
-     * from JSON
-     * @param output an array node representing the output of the action
-     */
-    public static void buyPremiumAccount(final CurrentPage currentPage,
-                                         final ObjectMapper objectMapper,
-                                         final ArrayNode output) {
-        if (currentPage.getName().equals("upgrades")) {
-            if (currentPage.getCurrentUser().getUser().getTokensCount() >= TEN) {
-                currentPage.getCurrentUser().getUser().getCredentials().setAccountType("premium");
-                currentPage.getCurrentUser().getUser().setTokensCount(currentPage
-                        .getCurrentUser().getUser().getTokensCount() - TEN);
-            } else {
-                StandardError.printerror(objectMapper, output);
-            }
-        } else {
-            StandardError.printerror(objectMapper, output);
-        }
-    }
-
-    /**
-     * Handles the purchase of tokens by checking if the user has enough balance and updating
-     * their token count and balance accordingly. If the conditions for the purchase are not met
-     * or the purchase fails, it outputs an error.
-     * @param action an object representing the action being performed
-     * @param currentPage an object representing the current page
-     * @param objectMapper an object used for serializing and deserializing Java objects to and
-     * from JSON
-     * @param output an array node representing the output of the action
-     */
-    public static void buyTokens(final Actions action, final CurrentPage currentPage,
-                                 final ObjectMapper objectMapper, final ArrayNode output) {
-        if (currentPage.getName().equals("upgrades")) {
-            int userBalance = Integer.parseInt(currentPage.getCurrentUser()
-                    .getUser().getCredentials().getBalance());
-            if (action.getCount() <= userBalance) {
-                currentPage.getCurrentUser().getUser().setTokensCount(
-                        currentPage.getCurrentUser().getUser().getTokensCount() + action.getCount());
-                currentPage.getCurrentUser().getUser().getCredentials()
-                        .setBalance(Integer.toString(userBalance - action.getCount()));
-            } else {
-                StandardError.printerror(objectMapper, output);
-            }
-        } else {
-            StandardError.printerror(objectMapper, output);
-        }
-    }
 
     /**
      * Makes a purchase of a movie.
