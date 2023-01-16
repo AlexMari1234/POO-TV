@@ -146,18 +146,30 @@ public class Users {
         this.ratedMovies = ratedMovies;
     }
 
+    /**
+     * return notifications
+     */
     public ArrayList<Notifications> getNotifications() {
         return notifications;
     }
 
+    /**
+     * set notifications
+     */
     public void setNotifications(final ArrayList<Notifications> notifications) {
         this.notifications = notifications;
     }
 
+    /**
+     * return subscribed genres
+     */
     public ArrayList<String> getSubscribedGenres() {
         return subscribedGenres;
     }
 
+    /**
+     * set subscribed genres
+     */
     public void setSubscribedGenres(final ArrayList<String> subscribedGenres) {
         this.subscribedGenres = subscribedGenres;
     }

@@ -10,18 +10,30 @@ public class Rating {
         this.movie = movie;
     }
 
+    /**
+     * return reting
+     */
     public int getRating() {
         return rating;
     }
 
+    /**
+     * set rating
+     */
     public void setRating(final int rating) {
         this.rating = rating;
     }
 
+    /**
+     * return movie
+     */
     public String getMovie() {
         return movie;
     }
 
+    /**
+     * set movie
+     */
     public void setMovie(final String movie) {
         this.movie = movie;
     }

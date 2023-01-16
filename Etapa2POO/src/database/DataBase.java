@@ -177,9 +177,19 @@ public final class DataBase {
         }
     }
 
+    /**
+     *This method is used to execute an action on the current page based on the feature
+     * of the action.
+     *@param indexAction the index of the action in the list of actions
+     *@param currentPage the current page object that needs to be updated
+     *@param inputData the DataBase object that contains the list of actions
+     *@param objectMapper the object mapper used to handle JSON data
+     *@param output the ArrayNode used to store the output data
+     *@param pages the ArrayList of pages that have been visited
+     */
     public static void executeAction(final int indexAction, final CurrentPage currentPage,
                                      final DataBase inputData, final ObjectMapper objectMapper,
-                                     final ArrayNode output, ArrayList<CurrentPage> pages) {
+                                     final ArrayNode output, final ArrayList<CurrentPage> pages) {
         Actions currentAction = inputData.getActions().get(indexAction);
         String currentFeature = currentAction.getFeature();
         Movies currentMovie = currentAction.getAddedMovie();
@@ -196,6 +206,14 @@ public final class DataBase {
         }
     }
 
+    /**
+     *This method is used to delete a movie from the list of movies in the DataBase object.
+     *@param deletedMovie the title of the movie that needs to be deleted
+     *@param currentPage the current page object that needs to be updated
+     *@param inputData the DataBase object that contains the list of movies
+     *@param objectMapper the object mapper used to handle JSON data
+     *@param output the ArrayNode used to store the output data
+     */
     public static void deleteMovie(final String deletedMovie, final CurrentPage currentPage,
                                    final DataBase inputData, final ObjectMapper objectMapper,
                                    final ArrayNode output) {
@@ -214,6 +232,14 @@ public final class DataBase {
 
     }
 
+    /**
+     *This method is used to add a movie to the list of movies in the DataBase object.
+     *@param currentMovie the movie object that needs to be added
+     *@param currentPage the current page object that needs to be updated
+     *@param inputData the DataBase object that contains the list of movies
+     *@param objectMapper the object mapper used to handle JSON data
+     *@param output the ArrayNode used to store the output data
+     */
     public static void addMovie(final Movies currentMovie, final CurrentPage currentPage,
                                 final DataBase inputData, final ObjectMapper objectMapper,
                                 final ArrayNode output) {
@@ -234,7 +260,12 @@ public final class DataBase {
 
     }
 
-
+    /**
+     *This method is used to check if a movie is present in the list of movies.
+     *@param currentMovie the name of the movie that needs to be checked
+     *@param movies the list of movies
+     *@return the index of the movie in the list if it is present, -1 otherwise
+     */
     public static int checkMovieInMovies(final String currentMovie,
                                          final ArrayList<Movies> movies) {
         if (movies == null) {
@@ -250,6 +281,13 @@ public final class DataBase {
         return -1;
     }
 
+    /**
+     *This method is used to create a NotifyUsersFromDataBase object and add all
+     * the users from the DataBase object as observers to it.
+     *@param inputData the DataBase object that contains the list of users
+     *@return the NotifyUsersFromDataBase object with all the users from the DataBase
+     * object added as observers
+     */
     public static NotifyUsersFromDataBase addUsersFromDataBase(final DataBase inputData) {
         NotifyUsersFromDataBase notifyUsersFromDataBase = new NotifyUsersFromDataBase();
         notifyUsersFromDataBase.setUsers(new ArrayList<NotificationDataBase>());

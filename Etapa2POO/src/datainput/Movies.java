@@ -267,16 +267,6 @@ public class Movies {
      */
     public static void watchMovie(final CurrentPage currentPage, final Movies movie,
                                   final ObjectMapper objectMapper, final ArrayNode output) {
-        /*if (checkWatchedMovie(currentPage, movie) == 1) {
-            if (currentPage.getCurrentUser().getUser().getWatchedMovies() == null) {
-                currentPage.getCurrentUser().getUser().setWatchedMovies(new ArrayList<Movies>());
-            }
-
-            currentPage.getCurrentUser().getUser().getWatchedMovies().add(new Movies(movie));
-            printAtOutputMovie(currentPage, objectMapper, output);
-        } else {
-            StandardError.printerror(objectMapper, output);
-        }*/
 
         if (checkPurchasedMovie(currentPage, movie) == 0) {
             if (checkWatchedMovie(currentPage, movie) == 0) {
@@ -481,7 +471,13 @@ public class Movies {
         return 1;
     }
 
-
+    /**
+     *This method is used to search for a movie in the list of movies and
+     * return the movie object if it is found.
+     *@param currentMovies the list of movies
+     *@param searchedMovie the name of the movie that needs to be searched
+     *@return the movie object if it is found, null otherwise
+     */
     public static Movies searchMovie(final ArrayList<Movies> currentMovies,
                                      final String searchedMovie) {
         for (int i = 0; i < currentMovies.size(); i++) {

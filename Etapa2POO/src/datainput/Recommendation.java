@@ -10,18 +10,30 @@ public class Recommendation {
         this.likes = likes;
     }
 
+    /**
+     * return genre
+     */
     public String getGenre() {
         return genre;
     }
 
+    /**
+     * set genre
+     */
     public void setGenre(final String genre) {
         this.genre = genre;
     }
 
+    /**
+     * return likes
+     */
     public int getLikes() {
         return likes;
     }
 
+    /**
+     * set likes
+     */
     public void setLikes(final int likes) {
         this.likes = likes;
     }

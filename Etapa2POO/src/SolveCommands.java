@@ -54,7 +54,20 @@ public class SolveCommands {
         inputData.getMovies().forEach(Movies::resetMovies);
     }
 
-
+    /**
+     *The method 'recommendation' is used to recommend a movie to a user based
+     * on their preferences.
+     *It checks if the user is logged in and if they have a premium account.
+     *Then it filters the movies by the country the user is in, sorts them by the number
+     * of likes and finds the genres that the user likes.
+     *It then recommends a movie from the highest liked genre that the user hasn't watched
+     * yet. If there's no movie that fits this criteria,
+     *the user will receive a notification that there is no recommendation.
+     *@param currentPage - current page of the user
+     *@param inputData - the input data of the system
+     *@param objectMapper - object mapper used to convert the data to json format
+     *@param output - the arraynode that holds the output data in json format
+     */
     public static void recommendation(final CurrentPage currentPage, final DataBase inputData,
                                       final ObjectMapper objectMapper, final ArrayNode output) {
         if (currentPage.getCurrentUser().getUser() != null) {

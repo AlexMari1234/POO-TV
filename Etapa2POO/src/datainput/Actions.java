@@ -134,26 +134,44 @@ public class Actions {
         return rate;
     }
 
+    /**
+     * return deleted movie
+     */
     public String getDeletedMovie() {
         return deletedMovie;
     }
 
+    /**
+     * set deleted movie
+     */
     public void setDeletedMovie(final String deletedMovie) {
         this.deletedMovie = deletedMovie;
     }
 
+    /**
+     * return added movie
+     */
     public Movies getAddedMovie() {
         return addedMovie;
     }
 
+    /**
+     * set added movie
+     */
     public void setAddedMovie(final Movies addedMovie) {
         this.addedMovie = addedMovie;
     }
 
+    /**
+     * return subscribed genres
+     */
     public String getSubscribedGenre() {
         return subscribedGenre;
     }
 
+    /**
+     * set subscribed genres
+     */
     public void setSubscribedGenre(final String subscribedGenre) {
         this.subscribedGenre = subscribedGenre;
     }

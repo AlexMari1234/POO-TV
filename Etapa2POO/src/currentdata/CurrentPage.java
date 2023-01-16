@@ -18,7 +18,10 @@ public class CurrentPage {
         this.currentUser = CurrentUser.getInstance();
     }
 
-    public CurrentPage(CurrentPage currentPage) {
+    /**
+     * copy current page
+     */
+    public CurrentPage(final CurrentPage currentPage) {
         this.name = currentPage.getName();
         this.moviesList = new ArrayList<Movies>(currentPage.getMoviesList());
         if (currentPage.getCurrentMovie() != null) {
